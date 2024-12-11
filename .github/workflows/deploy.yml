@@ -3,7 +3,7 @@ name: Deploy Dumi to GitHub Pages
 on:
   push:
     branches:
-      - master # 监控主分支
+      - main
 
 jobs:
   deploy:
@@ -15,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20.16.0
+          node-version: 18
 
       - name: Install pnpm
         run: npm install -g pnpm
@@ -23,8 +23,15 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Update .dumirc.ts for GitHub Pages
+        run: |
+          # 动态修改 base 和 publicPath
+          sed -i 's|base: .*|base: "/lucky-design/",|' .dumirc.ts
+          sed -i 's|publicPath: .*|publicPath: "/lucky-design/",|' .dumirc.ts
+          echo "Updated .dumirc.ts successfully."
+
       - name: Build project
-        run: npm run docs:build
+        run: pnpm run docs:build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

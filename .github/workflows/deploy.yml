@@ -16,14 +16,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.16.0
-          cache: 'pnpm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Install yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
-        run: pnpm install --registry=https://registry.npmmirror.com/
-
+        run: yarn --registry=https://registry.npmmirror.com/
 
       - name: Update .dumirc.ts for GitHub Pages
         run: |
@@ -33,7 +31,7 @@ jobs:
           echo "Updated .dumirc.ts successfully."
 
       - name: Build project
-        run: pnpm run docs:build
+        run: yarn run docs:build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

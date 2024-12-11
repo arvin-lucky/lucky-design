@@ -1,9 +1,9 @@
 # Foo
 
-This is an example component.
+This is an example component 2.
 
 ```jsx
-import { Foo } from 'lucky-design';
+import { Test } from 'lucky-design';
 
-export default () => <Foo title="Hello dumi!" />
+export default () => <Test title="Hello dumi!" />
 ```

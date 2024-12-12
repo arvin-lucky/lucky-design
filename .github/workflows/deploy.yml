@@ -30,6 +30,10 @@ jobs:
           sed -i 's|publicPath: .*|publicPath: "/lucky-design/",|' .dumirc.ts
           echo "Updated .dumirc.ts successfully."
 
+      # 日志输出.dumirc.ts文件内容
+      - name: Show .dumirc.ts
+        run: cat .dumirc.ts
+
       - name: Build project
         run: yarn run docs:build
 

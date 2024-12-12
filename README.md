@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/lucky-design.svg?style=flat)](https://npmjs.org/package/lucky-design)
 [![NPM downloads](http://img.shields.io/npm/dm/lucky-design.svg?style=flat)](https://npmjs.org/package/lucky-design)
 
-This is a component library developed based on React
+这是一个基于 React 开发的组件库
 
 ## Usage
 

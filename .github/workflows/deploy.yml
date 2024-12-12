@@ -1,43 +1,59 @@
-name: Deploy Dumi to GitHub Pages
+# 将静态内容部署到 GitHub Pages 的简单工作流程
+name: Deploy static content to Pages
 
 on:
+  # 在针对默认分支的推送上运行
   push:
-    branches:
-      - master
+    branches: ['master']
+
+  # 允许您从“操作”选项卡手动运行此工作流程
+  workflow_dispatch:
+
+# 设置 GITHUB_TOKEN 的权限以允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 仅允许一个并发部署，跳过正在进行的运行和最新排队之间的排队运行。
+# 但是，不要取消正在进行的运行，因为我们希望允许这些生产部署完成。
+concurrency:
+  group: 'pages'
+  cancel-in-progress: false
 
 jobs:
+  # 由于我们只是部署，因此单个部署作业
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      # 检出代码
+      - name: Checkout
+        uses: actions/checkout@v4
+      # 设置 Node.js 环境（根据项目需要的 Node.js 版本更改 `node-version` 值）
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20.16.0
-
+      # 安装 yarn
       - name: Install yarn
         run: npm install -g yarn
-
+      # 安装项目依赖
       - name: Install dependencies
         run: yarn --registry=https://registry.npmmirror.com/
-
-      # - name: Update .dumirc.ts for GitHub Pages
-      #   run: |
-      #     # 动态修改 base 和 publicPath
-      #     sed -i 's|base: .*|base: "/lucky-design/",|' .dumirc.ts
-      #     sed -i 's|publicPath: .*|publicPath: "/lucky-design/",|' .dumirc.ts
-      #     echo "Updated .dumirc.ts successfully."
-
-      # - name: Show .dumirc.ts
-      #   run: cat .dumirc.ts
-
+      # 构建项目
       - name: Build project
         run: yarn run docs:build
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      # 配置 Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: /lucky-design/docs-dist # Dumi 生成的静态文件目录
+          # 上传的文件夹
+          path: './docs-dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

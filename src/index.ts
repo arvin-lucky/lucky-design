@@ -1,2 +1,2 @@
-export { default as Foo } from './Foo';
-export { default as Test } from './Test';
+export { default as Button } from './components/Button';
+export { default as Foo } from './components/Foo';

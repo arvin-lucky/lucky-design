@@ -1,16 +1,33 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "baseUrl": "./",
-    "paths": {
-      "@@/*": [".dumi/tmp/*"],
-      "lucky-design": ["src"],
-      "lucky-design/*": ["src/*", "*"]
-    }
-  },
-  "include": [".dumirc.ts", "src/**/*"]
+	"compilerOptions": {
+		"experimentalDecorators": true,
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"importHelpers": true,
+		"jsx": "react",
+		"esModuleInterop": true,
+		"sourceMap": true,
+		"declaration": true,
+		"baseUrl": "./",
+		"strict": true,
+		"paths": {
+			"@/*": ["src/*"],
+			"@@/*": ["src/.umi/*"]
+		},
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"noImplicitAny": false
+	},
+	"defaultSeverity": "warning",
+	"exclude": [
+		"node_modules",
+		"lib",
+		"es",
+		"dist",
+		"**/__tests__",
+		"test",
+		"docs",
+		"tests"
+	]
 }

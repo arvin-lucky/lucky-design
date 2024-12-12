@@ -1,2 +1,6 @@
 /dist
 *.yaml
+.vscode/
+docker/
+node_modules/
+/docs-dist

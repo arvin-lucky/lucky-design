@@ -13,6 +13,16 @@ TODO
 
 TODO
 
+## TODO
+
+设置钩子文件为可执行
+运行以下命令来设置 .husky/pre-commit 和 .husky/commit-msg 文件为可执行：
+
+```bash
+chmod +x .husky/pre-commit
+chmod +x .husky/commit-msg
+```
+
 ## Development
 
 ```bash

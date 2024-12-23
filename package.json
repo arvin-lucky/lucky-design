@@ -2,7 +2,15 @@
 	"name": "lucky-design",
 	"version": "0.0.1",
 	"description": "This is a component library developed based on React",
+	"keywords": [
+		"react",
+		"ant design",
+		"lucky-design",
+		"component",
+		"library"
+	],
 	"license": "MIT",
+	"author": "Arvin",
 	"module": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"files": [
@@ -32,6 +40,10 @@
 	"lint-staged": {
 		"*.{js,css,less,ts,tsx,jsx}": "prettier --write"
 	},
+	"dependencies": {
+		"antd": "^5.22.5",
+		"dumi-theme-chakra": "^0.0.22"
+	},
 	"devDependencies": {
 		"@commitlint/cli": "^17.8.1",
 		"@commitlint/config-conventional": "^17.8.1",
@@ -39,7 +51,6 @@
 		"@types/react-dom": "^18.0.0",
 		"@umijs/lint": "^4.0.0",
 		"dumi": "^2.4.13",
-		"dumi-theme-antd-style": "^0.31.1",
 		"eslint": "^8.23.0",
 		"eslint-plugin-jsx-a11y": "^6.10.2",
 		"eslint-plugin-simple-import-sort": "^12.1.1",
@@ -59,6 +70,5 @@
 	},
 	"publishConfig": {
 		"access": "public"
-	},
-	"authors": []
+	}
 }

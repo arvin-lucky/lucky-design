@@ -1,33 +1,40 @@
 {
-	"compilerOptions": {
-		"experimentalDecorators": true,
-		"target": "esnext",
-		"module": "esnext",
-		"moduleResolution": "node",
-		"importHelpers": true,
-		"jsx": "react",
-		"esModuleInterop": true,
-		"sourceMap": true,
-		"declaration": true,
-		"baseUrl": "./",
-		"strict": true,
-		"paths": {
-			"@/*": ["src/*"],
-			"@@/*": ["src/.umi/*"]
-		},
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"noImplicitAny": false
-	},
-	"defaultSeverity": "warning",
-	"exclude": [
-		"node_modules",
-		"lib",
-		"es",
-		"dist",
-		"**/__tests__",
-		"test",
-		"docs",
-		"tests"
-	]
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": true,
+    "baseUrl": "./",
+    "strict": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@@/*": [
+        "src/.umi/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noImplicitAny": false
+  },
+  "defaultSeverity": "warning",
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "**/__tests__",
+    "test",
+    "docs",
+    "tests"
+  ],
+  "include": [
+    ".dumirc.ts"
+  ]
 }

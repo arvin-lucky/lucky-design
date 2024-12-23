@@ -23,6 +23,25 @@ chmod +x .husky/pre-commit
 chmod +x .husky/commit-msg
 ```
 
+2.
+
+```json
+"lint-staged": {
+		"*.{md,json}": [
+			"prettier --write --no-error-on-unmatched-pattern"
+		],
+		"*.{css,less}": "stylelint --fix",
+		"*.{js,jsx}": [
+			"eslint --cache --fix",
+			"prettier --write"
+		],
+		"*.{ts,tsx}": [
+			"eslint --fix",
+			"prettier --parser=typescript --write"
+		]
+	}
+```
+
 ## Development
 
 ```bash
